@@ -6,6 +6,7 @@ import javax.swing.*;
 import javafx.application.Application;
 import javafx.embed.swing.SwingNode;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -21,10 +22,12 @@ public class DiscountPaint extends Application
         swingNodeManager(adapter);
 
         Pane holder = new Pane();
+        holder.setMaxHeight(800);
+        holder.setMaxWidth(1000);
         holder.getChildren().add(adapter);
 
 
-        paintStage.setScene(new Scene(holder,500,400));
+        paintStage.setScene(new Scene(holder,1000,800));
         paintStage.setTitle("Discount Paint");
         paintStage.show();
     }
