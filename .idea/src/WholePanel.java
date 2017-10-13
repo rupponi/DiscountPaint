@@ -95,7 +95,6 @@ public class WholePanel extends JPanel
         buttonPanel.add(secondRowPanel);
         buttonPanel.add(thirdRowPanel);
 
-        //TO BE COMPLETED
 
 
         canvas = new CanvasPanel(filledTrue); //Creates a CanvasPanel object and passes through the given filling boolean.
@@ -105,9 +104,10 @@ public class WholePanel extends JPanel
 
         setLayout(new BorderLayout());
         add(sPane, BorderLayout.CENTER);
+        setMinimumSize(new Dimension(800,600));
     }
 
-    //Its description should be completed
+
     private class ColorListener implements ActionListener //This class communicates the user-picked colors within the application
     {													 // to the paintComponent method so it can draw out the layout.
         public void actionPerformed(ActionEvent event) //This decides the action of the CanvasPanel based on the states of the radio buttons.
@@ -138,12 +138,12 @@ public class WholePanel extends JPanel
                 backgroundColor = Color.PINK;
                 canvas.setBackground(backgroundColor);
             }
-            //needs to be filled
+
         }
-    } // end of ColorListener
+    }
 
 
-    //Its description should be completed
+
     private class FillListener implements ActionListener //This class communicates whether or not to fill the circle with a boolean
     {													//that will be passed to paintComponent, providing the user input.
         public void actionPerformed(ActionEvent event) //This decides the filling of the circle in CanvasPanel based on the state of each filling button.
@@ -161,7 +161,7 @@ public class WholePanel extends JPanel
         }
     }
 
-    //CanvasPanel is the panel where a circle is drawn
+
     private class CanvasPanel extends JPanel //This panel is the bottom half of the applet and holds the circle and background.
     {
         //Constructor to initialize the canvas panel
@@ -194,7 +194,7 @@ public class WholePanel extends JPanel
             if(filledTrue) { //Uses boolean passed from FillListener class to decide whether or not to fill.
                 page.fillOval(x1,y1,(currentDiameter/2),(currentDiameter/2));
             }
-            //to be filled
+
         }
 
         /** This method is overriden to enable keyboard focus */
@@ -236,6 +236,7 @@ public class WholePanel extends JPanel
                     currentDiameter = currentDiameter - 6;
                     repaint();
                 }
+
             }
         } // end of DirectionListener
 

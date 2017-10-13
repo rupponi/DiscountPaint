@@ -6,40 +6,34 @@ import javax.swing.*;
 import javafx.application.Application;
 import javafx.embed.swing.SwingNode;
 import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class DiscountPaint extends Application
-{
+public class DiscountPaint extends Application {
+
+    private SwingNode wholePanelNode = new SwingNode();
+    private WholePanel wholePanelObj = new WholePanel();
+    private BorderPane contentHolder = new BorderPane();
+
+    private TextArea textBox = new TextArea("Hello");
+
+
     public static void main(String[] args) {
         launch(args);
     }
 
-    public void start(Stage paintStage)
-    {
-        SwingNode adapter = new SwingNode();
-        swingNodeManager(adapter);
-
-        Pane holder = new Pane();
-        holder.setMaxHeight(800);
-        holder.setMaxWidth(1000);
-        holder.getChildren().add(adapter);
-
-
-        paintStage.setScene(new Scene(holder,1000,800));
+    public void start(Stage paintStage) {
+        wholePanelNode.setContent(wholePanelObj);
         paintStage.setTitle("Discount Paint");
-        paintStage.show();
+
+        contentHolder.setTop(wholePanelNode);
+        contentHolder.setBottom(textBox);
+
+        paintStage.setScene(new Scene(contentHolder,500,400));
     }
 
-    public void swingNodeManager(SwingNode swingNode) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                WholePanel wholePanel = new WholePanel();
-                swingNode.setContent(wholePanel);
-            }
-        });
-    }
 
 }
 
